@@ -95,8 +95,8 @@
                           institutions. I'm expert in HTML/HTML5, CSS/CSS3, Bootstrap 4,
                           Wordpress Theme Customization, JavaScript, Php, Laravel and more.
                         </p>
-                        <h3 class="client-title">Williamson
-                            <small class="post">Web Designer</small>
+                        <h3 class="client-title">Shamima
+                            <small class="post">Web Developer</small>
                         </h3>
                     </div>
                 </div>
@@ -113,8 +113,8 @@
                           institutions. I'm expert in HTML/HTML5, CSS/CSS3, Bootstrap 4,
                           Wordpress Theme Customization, JavaScript, Php, Laravel and more.
                         </p>
-                        <h3 class="client-title">Liamson
-                            <small class="post">Web Designer</small>
+                        <h3 class="client-title">Shamima
+                            <small class="post">Web Developer</small>
                         </h3>
                     </div>
                 </div>
