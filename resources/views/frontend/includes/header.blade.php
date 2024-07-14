@@ -2,8 +2,8 @@
 <header>
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand logo" href="index.html">
-        <img src="images/logo.png" alt="logo">
+        <a class="navbar-brand logo" href="{{ route('home') }}">
+        <img src="{{ asset('/') }}frontend/assets/images/logo.png" alt="logo">
 <!--       <h2>Shamima Haque</h2>-->
         </a>
 
@@ -14,19 +14,19 @@
   <div class="collapse navbar-collapse menu" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="{{ route('home') }}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="">Services</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="portfolio.html">Portfolio</a>
+        <a class="nav-link" href="">Portfolio</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link" href="">Contact</a>
       </li>
     </ul>
   </div>
