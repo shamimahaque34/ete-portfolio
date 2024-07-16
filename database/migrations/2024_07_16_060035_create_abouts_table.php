@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
+            $table->text('cv');
+            $table->tinyInteger('status')->default(1)->nullable();
             $table->timestamps();
         });
     }

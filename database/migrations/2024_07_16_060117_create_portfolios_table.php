@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->id();
+            $table->text('image');
+            $table->text('website_link');
+            $table->tinyInteger('status')->default(1)->nullable();
             $table->timestamps();
         });
     }

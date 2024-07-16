@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('skills', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('skill_category_id');
+            $table->string('name');
+            $table->tinyInteger('status')->default(1)->nullable();
             $table->timestamps();
+
         });
     }
 
