@@ -25,7 +25,7 @@
                                     <select name="skill_category_id" class=" form-control " data-toggle="select"
                                         data-placeholder="Choose ...">
                                         <option value="">Select a Skill category</option>
-                                        @foreach ($skillcategories as $skillcategory)
+                                        @foreach ($skillCategories as $skillcategory)
                                             <option value="{{ $skillcategory->id }}"
                                                 {{ $errors->any() ? old('skill_category_id') : (isset($skill) && $skill->skill_category_id == $skillcategory->id ? 'selected' : '') }}>
                                                 {{ $skillcategory->name }}</option>

@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-header bg-light">
                     <h3>{{ isset($skillCategory) ? 'Edit' : 'Create' }} Skill Category </h3>
-                    <a href="{{ route('skillCategorys.index') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-sliders"></i></a>
+                    <a href="{{ route('skill-categories.index') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-sliders"></i></a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ isset($skillCategory) ? route('skillCategorys.update', $skillCategory->id) : route('skillCategorys.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ isset($skillCategory) ? route('skill-categories.update', $skillCategory->id) : route('skill-categories.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if(isset($skillCategory))
                             @method('put')

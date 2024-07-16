@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Skill;
+use App\Models\SkillCategory;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -14,7 +15,8 @@ class SkillController extends Controller
     public function index()
     {
         return view('backend.skill.manage',[
-            'skills'=>Skill::all(),
+            'skillCategories' =>SkillCategory::all(),
+            'skills' =>Skill::all(),
         ]);
     }
 
@@ -23,7 +25,9 @@ class SkillController extends Controller
      */
     public function create()
     {
-        return view('backend.skill.form');
+        return view('backend.skill.form',[
+            'skillCategories' =>SkillCategory::all(),
+        ]);
     }
 
     /**
@@ -49,6 +53,7 @@ class SkillController extends Controller
     public function edit(string $id)
     {
         return view('backend.skill.form',[
+            'skillCategories' =>SkillCategory::all(),
             'skill' => Skill::where('id',$id)->first(),
         ]);
     }

@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-header bg-light">
                     <h3>{{ isset($service) ? 'Edit' : 'Create' }} Service </h3>
-                    <a href="{{ route('services.index') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-sliders"></i></a>
+                    <a href="{{ route('servicees.index') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-sliders"></i></a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ isset($service) ? route('services.update', $service->id) : route('services.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ isset($service) ? route('servicees.update', $service->id) : route('servicees.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         @if(isset($service))
                             @method('put')
