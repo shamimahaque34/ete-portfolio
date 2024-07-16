@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
@@ -12,7 +13,9 @@ class SkillController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.skill.manage',[
+            'skills'=>Skill::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.skill.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Skill::saveOrUpdateskill($request);
+        return redirect()->route('skills.index')->with('success','skill Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class SkillController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.skill.form',[
+            'skill' => Skill::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class SkillController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Skill::saveOrUpdateskill($request,$id);
+        return redirect()->route('skills.index')->with('success','skill Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class SkillController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $skill = Skill::where('id',$id)->first();
+        if ($skill)
+        {
+            if (file_exists($skill->logo)){
+                unlink($skill->logo);
+            }
+            $skill->delete();
+        }
+        return redirect()->route('skills.index')->with('success','skill Delete Successfully');
     }
 }

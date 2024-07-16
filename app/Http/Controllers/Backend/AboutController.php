@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -12,7 +13,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.about.manage',[
+            'abouts'=>About::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class AboutController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.about.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        About::saveOrUpdateabout($request);
+        return redirect()->route('abouts.index')->with('success','about Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class AboutController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.about.form',[
+            'about' => About::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class AboutController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        About::saveOrUpdateabout($request,$id);
+        return redirect()->route('abouts.index')->with('success','about Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class AboutController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $about = About::where('id',$id)->first();
+        if ($about)
+        {
+            if (file_exists($about->logo)){
+                unlink($about->logo);
+            }
+            $about->delete();
+        }
+        return redirect()->route('abouts.index')->with('success','about Delete Successfully');
     }
 }

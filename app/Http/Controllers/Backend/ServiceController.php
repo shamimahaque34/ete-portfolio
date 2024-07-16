@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
@@ -12,7 +13,9 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.service.manage',[
+            'services'=>Service::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.service.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Service::saveOrUpdateservice($request);
+        return redirect()->route('servicees.index')->with('success','service Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class ServiceController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.service.form',[
+            'service' => Service::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class ServiceController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Service::saveOrUpdateservice($request,$id);
+        return redirect()->route('servicees.index')->with('success','service Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class ServiceController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $service = Service::where('id',$id)->first();
+        if ($service)
+        {
+            if (file_exists($service->logo)){
+                unlink($service->logo);
+            }
+            $service->delete();
+        }
+        return redirect()->route('servicees.index')->with('success','service Delete Successfully');
     }
 }

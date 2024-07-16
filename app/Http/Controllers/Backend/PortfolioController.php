@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
@@ -12,7 +13,9 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.portfolio.manage',[
+            'portfolios'=>Portfolio::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.portfolio.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Portfolio::saveOrUpdateportfolio($request);
+        return redirect()->route('portfolios.index')->with('success','portfolio Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class PortfolioController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.portfolio.form',[
+            'portfolio' => Portfolio::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Portfolio::saveOrUpdateportfolio($request,$id);
+        return redirect()->route('portfolios.index')->with('success','portfolio Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class PortfolioController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $portfolio = Portfolio::where('id',$id)->first();
+        if ($portfolio)
+        {
+            if (file_exists($portfolio->logo)){
+                unlink($portfolio->logo);
+            }
+            $portfolio->delete();
+        }
+        return redirect()->route('portfolios.index')->with('success','portfolio Delete Successfully');
     }
 }

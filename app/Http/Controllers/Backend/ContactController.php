@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,9 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.contact.manage',[
+            'contacts'=>Contact::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class ContactController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.contact.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Contact::saveOrUpdatecontact($request);
+        return redirect()->route('contacts.index')->with('success','contact Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.contact.form',[
+            'contact' => Contact::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Contact::saveOrUpdatecontact($request,$id);
+        return redirect()->route('contacts.index')->with('success','contact Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $contact = Contact::where('id',$id)->first();
+        if ($contact)
+        {
+            if (file_exists($contact->logo)){
+                unlink($contact->logo);
+            }
+            $contact->delete();
+        }
+        return redirect()->route('contacts.index')->with('success','contact Delete Successfully');
     }
 }

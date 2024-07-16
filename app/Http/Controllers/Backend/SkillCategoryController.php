@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\SkillCategory;
 use Illuminate\Http\Request;
 
 class SkillCategoryController extends Controller
@@ -12,7 +13,9 @@ class SkillCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.skill-category.manage',[
+            'skillCategories'=>SkillCategory::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class SkillCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.skill-category.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class SkillCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        SkillCategory::saveOrUpdateskillCategory($request);
+        return redirect()->route('skill-categories.index')->with('success','skill Category Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class SkillCategoryController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.skill-category.form',[
+            'skillCategory' => SkillCategory::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class SkillCategoryController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        SkillCategory::saveOrUpdateskillCategory($request,$id);
+        return redirect()->route('skill-categories.index')->with('success','skill Category Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class SkillCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $skillCategory = SkillCategory::where('id',$id)->first();
+        if ($skillCategory)
+        {
+            if (file_exists($skillCategory->logo)){
+                unlink($skillCategory->logo);
+            }
+            $skillCategory->delete();
+        }
+        return redirect()->route('skill-categories.index')->with('success','skill Category Delete Successfully');
     }
 }

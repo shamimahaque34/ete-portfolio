@@ -27,22 +27,22 @@ group(function () {
     //homes route
     Route::resource('homes', HomeController::class);
 
-    //homes route
+    //abouts route
     Route::resource('abouts', AboutController::class);
 
-    //homes route
-    Route::resource('services', ServiceController::class);
+    //services route
+    Route::resource('servicees', ServiceController::class);
 
-    //homes route
+    //portfolios route
     Route::resource('portfolios', PortfolioController::class);
 
-    //homes route
+    //contacts route
     Route::resource('contacts', ContactController::class);
 
-    //homes route
+    //skill-categories route
     Route::resource('skill-categories', SkillCategoryController::class);
 
-    //homes route
+    //skills route
     Route::resource('skills', SkillController::class);
 
 
