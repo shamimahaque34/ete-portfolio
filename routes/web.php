@@ -1,7 +1,7 @@
 <?php
 
-// use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\Frontend\HomeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\HomeController;
 // use App\Http\Controllers\Backend\DashboardController;
 
 
@@ -35,3 +35,8 @@ use function Ramsey\Uuid\v1;
 //         ]);
 //     });
 // });
+
+
+    // //homes route
+    // Route::resource('homes', HomeController::class);
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Home;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,7 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.home.manage',[
+            'homes'=>Home::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class HomeController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.home.form');
     }
 
     /**
@@ -28,7 +31,8 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Home::saveOrUpdateHome($request);
+        return redirect()->route('homes.index')->with('success','Home Create Successfully');
     }
 
     /**
@@ -44,7 +48,9 @@ class HomeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('backend.home.form',[
+            'home' => Home::where('id',$id)->first(),
+        ]);
     }
 
     /**
@@ -52,7 +58,8 @@ class HomeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        Home::saveOrUpdateHome($request,$id);
+        return redirect()->route('homes.index')->with('success','Home Update Successfully');
     }
 
     /**
@@ -60,6 +67,14 @@ class HomeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $home = Home::where('id',$id)->first();
+        if ($home)
+        {
+            if (file_exists($home->logo)){
+                unlink($home->logo);
+            }
+            $home->delete();
+        }
+        return redirect()->route('homes.index')->with('success','Home Delete Successfully');
     }
 }

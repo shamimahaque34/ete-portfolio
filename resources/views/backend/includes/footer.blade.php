@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row align-items-center flex-row-reverse">
             <div class="col-md-12 col-sm-12 text-center">
-                Copyright © {{ date('Y') }} <a href="#">Faito</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="#"> Robiul Ibne Ali </a> All rights reserved
+                Copyright © {{ date('Y') }} <a href="#">Ete Portfolio</a>. Designed with <span class="fa fa-heart text-danger"></span> by <a href="#"> Shamima Haque </a> All rights reserved
             </div>
         </div>
     </div>
