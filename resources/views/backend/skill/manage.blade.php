@@ -24,7 +24,7 @@
                         @foreach($skills as $skill)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $skill->name }}</td>
+                                <td>{{ $skill->skillCategory->name ?? ''}}</td>
                                 <td>{{ $skill->name }}</td>
                                 <td>{{ $skill->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">

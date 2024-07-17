@@ -32,7 +32,7 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         About::saveOrUpdateabout($request);
-        return redirect()->route('abouts.index')->with('success','about Create Successfully');
+        return redirect()->route('abouts.index')->with('success','About Create Successfully');
     }
 
     /**
@@ -59,7 +59,7 @@ class AboutController extends Controller
     public function update(Request $request, string $id)
     {
         About::saveOrUpdateabout($request,$id);
-        return redirect()->route('abouts.index')->with('success','about Update Successfully');
+        return redirect()->route('abouts.index')->with('success','About Update Successfully');
     }
 
     /**
@@ -70,11 +70,11 @@ class AboutController extends Controller
         $about = About::where('id',$id)->first();
         if ($about)
         {
-            if (file_exists($about->logo)){
-                unlink($about->logo);
+            if (file_exists($about->cv)){
+                unlink($about->sv);
             }
             $about->delete();
         }
-        return redirect()->route('abouts.index')->with('success','about Delete Successfully');
+        return redirect()->route('abouts.index')->with('success','About Delete Successfully');
     }
 }

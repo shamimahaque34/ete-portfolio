@@ -15,10 +15,7 @@
                     <table class="table" id="file-datatable">
                         <thead>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Designation</th>
-                        <th>Image</th>
-                        <th>Description</th>
+                        <th>CV</th>
                         <th>Status</th>
                         <th>Action</th>
                         </thead>
@@ -26,10 +23,7 @@
                         @foreach($abouts as $about)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $about->name }}</td>
-                                <td>{{ $about->designation }}</td>
-                                <td><img src="{{ asset($about->image )}}" alt="" style="height: 60px"></td>
-                                <td>{!! $about->description !!}</td>
+                                <td>{{ $about->cv}}</td>
                                 <td>{{ $about->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('abouts.edit', $about->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>

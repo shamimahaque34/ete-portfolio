@@ -32,7 +32,7 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         Service::saveOrUpdateservice($request);
-        return redirect()->route('servicees.index')->with('success','service Create Successfully');
+        return redirect()->route('servicees.index')->with('success','Service Create Successfully');
     }
 
     /**
@@ -59,7 +59,7 @@ class ServiceController extends Controller
     public function update(Request $request, string $id)
     {
         Service::saveOrUpdateservice($request,$id);
-        return redirect()->route('servicees.index')->with('success','service Update Successfully');
+        return redirect()->route('servicees.index')->with('success','Service Update Successfully');
     }
 
     /**
@@ -70,11 +70,8 @@ class ServiceController extends Controller
         $service = Service::where('id',$id)->first();
         if ($service)
         {
-            if (file_exists($service->logo)){
-                unlink($service->logo);
-            }
             $service->delete();
         }
-        return redirect()->route('servicees.index')->with('success','service Delete Successfully');
+        return redirect()->route('servicees.index')->with('success','Service Delete Successfully');
     }
 }

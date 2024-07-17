@@ -30,7 +30,7 @@
                                 <td>{!! $service->description !!}</td>
                                 <td>{{ $service->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
-                                    <a href="{{ route('services.edit', $service->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ route('servicees.edit', $service->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                     <form action="{{ route('servicees.destroy', $service->id) }}" method="post" id="deleteItem">
                                         @csrf
                                         @method('delete')

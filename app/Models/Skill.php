@@ -20,4 +20,10 @@ class Skill extends Model
             'status'            => $request->status == 'on' ? 1 : 0,
         ]);
     }
+
+
+    public function skillCategory()
+    {
+        return $this->belongsTo(SkillCategory::class);
+    }
 }

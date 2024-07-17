@@ -32,7 +32,7 @@ class SkillCategoryController extends Controller
     public function store(Request $request)
     {
         SkillCategory::saveOrUpdateskillCategory($request);
-        return redirect()->route('skill-categories.index')->with('success','skill Category Create Successfully');
+        return redirect()->route('skill-categories.index')->with('success','Skill Category Create Successfully');
     }
 
     /**
@@ -59,7 +59,7 @@ class SkillCategoryController extends Controller
     public function update(Request $request, string $id)
     {
         SkillCategory::saveOrUpdateskillCategory($request,$id);
-        return redirect()->route('skill-categories.index')->with('success','skill Category Update Successfully');
+        return redirect()->route('skill-categories.index')->with('success','Skill Category Update Successfully');
     }
 
     /**
@@ -70,11 +70,8 @@ class SkillCategoryController extends Controller
         $skillCategory = SkillCategory::where('id',$id)->first();
         if ($skillCategory)
         {
-            if (file_exists($skillCategory->logo)){
-                unlink($skillCategory->logo);
-            }
             $skillCategory->delete();
         }
-        return redirect()->route('skill-categories.index')->with('success','skill Category Delete Successfully');
+        return redirect()->route('skill-categories.index')->with('success','Skill Category Delete Successfully');
     }
 }

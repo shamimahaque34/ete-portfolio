@@ -19,4 +19,9 @@ class SkillCategory extends Model
             'status'      => $request->status == 'on' ? 1 : 0,
         ]);
     }
+
+    public function skills()
+    {
+        return $this->hasMany(Skill::class);
+    }
 }

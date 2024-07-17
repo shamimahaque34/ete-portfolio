@@ -32,7 +32,7 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         Portfolio::saveOrUpdateportfolio($request);
-        return redirect()->route('portfolios.index')->with('success','portfolio Create Successfully');
+        return redirect()->route('portfolios.index')->with('success','Portfolio Create Successfully');
     }
 
     /**
@@ -59,7 +59,7 @@ class PortfolioController extends Controller
     public function update(Request $request, string $id)
     {
         Portfolio::saveOrUpdateportfolio($request,$id);
-        return redirect()->route('portfolios.index')->with('success','portfolio Update Successfully');
+        return redirect()->route('portfolios.index')->with('success','Portfolio Update Successfully');
     }
 
     /**
@@ -70,11 +70,11 @@ class PortfolioController extends Controller
         $portfolio = Portfolio::where('id',$id)->first();
         if ($portfolio)
         {
-            if (file_exists($portfolio->logo)){
-                unlink($portfolio->logo);
+            if (file_exists($portfolio->image)){
+                unlink($portfolio->image);
             }
             $portfolio->delete();
         }
-        return redirect()->route('portfolios.index')->with('success','portfolio Delete Successfully');
+        return redirect()->route('portfolios.index')->with('success','Portfolio Delete Successfully');
     }
 }

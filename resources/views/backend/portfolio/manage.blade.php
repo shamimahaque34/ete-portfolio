@@ -22,7 +22,7 @@
                         </thead>
                         <tbody>
                         @foreach($portfolios as $portfolio)
-                            <tr>
+                            <tr><td>{{ $loop->iteration }}</td>
                                 <td><img src="{{ asset($portfolio->image )}}" alt="" style="height: 60px"></td>
                                 <td>{{$portfolio->website_link}}</td>
                                 <td>{{ $portfolio->status == 1 ? 'Published' : 'Unpublished' }}</td>

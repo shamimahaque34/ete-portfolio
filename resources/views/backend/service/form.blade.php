@@ -18,7 +18,7 @@
                         @endif
 
                         <div class="row mt-4">
-                            <label for="" class="col-md-3">Title</label>*</label>
+                            <label for="" class="col-md-3">Title*</label>
                             <div class="col-md-9">
                                 <input type="text" name="title" class="form-control" placeholder="Title" value="{{ isset($service) ? $service->title: '' }}" />
                             </div>

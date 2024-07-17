@@ -70,8 +70,8 @@ class HomeController extends Controller
         $home = Home::where('id',$id)->first();
         if ($home)
         {
-            if (file_exists($home->logo)){
-                unlink($home->logo);
+            if (file_exists($home->image)){
+                unlink($home->image);
             }
             $home->delete();
         }

@@ -36,7 +36,7 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         Skill::saveOrUpdateskill($request);
-        return redirect()->route('skills.index')->with('success','skill Create Successfully');
+        return redirect()->route('skills.index')->with('success','Skill Create Successfully');
     }
 
     /**
@@ -64,7 +64,7 @@ class SkillController extends Controller
     public function update(Request $request, string $id)
     {
         Skill::saveOrUpdateskill($request,$id);
-        return redirect()->route('skills.index')->with('success','skill Update Successfully');
+        return redirect()->route('skills.index')->with('success','Skill Update Successfully');
     }
 
     /**
@@ -75,11 +75,8 @@ class SkillController extends Controller
         $skill = Skill::where('id',$id)->first();
         if ($skill)
         {
-            if (file_exists($skill->logo)){
-                unlink($skill->logo);
-            }
             $skill->delete();
         }
-        return redirect()->route('skills.index')->with('success','skill Delete Successfully');
+        return redirect()->route('skills.index')->with('success','Skill Delete Successfully');
     }
 }

@@ -32,7 +32,7 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         Contact::saveOrUpdatecontact($request);
-        return redirect()->route('contacts.index')->with('success','contact Create Successfully');
+        return redirect()->route('contacts.index')->with('success','Contact Create Successfully');
     }
 
     /**
@@ -59,7 +59,7 @@ class ContactController extends Controller
     public function update(Request $request, string $id)
     {
         Contact::saveOrUpdatecontact($request,$id);
-        return redirect()->route('contacts.index')->with('success','contact Update Successfully');
+        return redirect()->route('contacts.index')->with('success','Contact Update Successfully');
     }
 
     /**
@@ -70,11 +70,8 @@ class ContactController extends Controller
         $contact = Contact::where('id',$id)->first();
         if ($contact)
         {
-            if (file_exists($contact->logo)){
-                unlink($contact->logo);
-            }
             $contact->delete();
         }
-        return redirect()->route('contacts.index')->with('success','contact Delete Successfully');
+        return redirect()->route('contacts.index')->with('success','Contact Delete Successfully');
     }
 }

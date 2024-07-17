@@ -19,9 +19,9 @@
 
 
                         <div class="row mt-3">
-                            <div class="col-md-3">
-                                <label for="" class=""> Skill Category Name</label>
-                                <div class="">
+
+                                <label for="" class="col-md-3"> Skill Category Name</label>
+                                <div class="col-md-9">
                                     <select name="skill_category_id" class=" form-control " data-toggle="select"
                                         data-placeholder="Choose ...">
                                         <option value="">Select a Skill category</option>
@@ -33,6 +33,7 @@
                                     </select>
                                 </div>
                             </div>
+
 
                         <div class="row mt-4">
                             <label for="" class="col-md-3">Name*</label>

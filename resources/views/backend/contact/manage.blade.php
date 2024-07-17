@@ -1,13 +1,13 @@
 @extends('backend.master')
 
-@section('title', 'Manage contact')
+@section('title', 'Manage Contact')
 
 @section('body')
     <div class="row mt-5">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header bg-light">
-                    <h3>Manage contact</h3>
+                    <h3>Manage Contact</h3>
                     <a href="{{ route('contacts.create') }}" class="btn btn-success btn-sm position-absolute me-5" style="right: 0"><i class="fa fa-plus-circle"></i></a>
                 </div>
                 <div class="card-body">
@@ -15,10 +15,10 @@
                     <table class="table" id="file-datatable">
                         <thead>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Designation</th>
-                        <th>Image</th>
-                        <th>Description</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th>Social Link</th>
                         <th>Status</th>
                         <th>Action</th>
                         </thead>
@@ -26,10 +26,10 @@
                         @foreach($contacts as $contact)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $contact->name }}</td>
-                                <td>{{ $contact->designation }}</td>
-                                <td><img src="{{ asset($contact->image )}}" alt="" style="height: 60px"></td>
-                                <td>{!! $contact->description !!}</td>
+                                <td>{{ $contact->phone }}</td>
+                                <td>{{ $contact->email }}</td>
+                                <td>{!! $contact->address !!}</td>
+                                <td>{{ $contact->social_link }}</td>
                                 <td>{{ $contact->status == 1 ? 'Published' : 'Unpublished' }}</td>
                                 <td class="d-flex">
                                     <a href="{{ route('contacts.edit', $contact->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
