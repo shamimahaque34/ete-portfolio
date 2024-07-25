@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\PortfolioController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SkillCategoryController;
 use App\Http\Controllers\Backend\SkillController;
+use App\Http\Controllers\Backend\SocialIconController;
 
 Route::middleware([
     'auth:sanctum',
@@ -44,6 +45,9 @@ group(function () {
 
     //skills route
     Route::resource('skills', SkillController::class);
+
+    //social icons route
+    Route::resource('social-icons', SocialIconController::class);
 
 
 

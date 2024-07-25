@@ -46,6 +46,7 @@
                         <li><a href="{{ route('skill-categories.index') }}" class="slide-item">Skill Category</a></li>
                         <li><a href="{{ route('skills.index') }}" class="slide-item">Skill</a></li>
                         <li><a href="{{ route('contacts.index') }}" class="slide-item">Contact</a></li>
+                        <li><a href="{{ route('social-icons.index') }}" class="slide-item">Social Icon</a></li>
                     </ul>
                 </li>
 

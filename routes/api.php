@@ -11,6 +11,8 @@ Route::get('/user', function (Request $request) {
 Route::get('/testimonial-info',[ApiController::class,'getTestimonialInfo']);
 Route::get('/service-info',[ApiController::class,'getServiceInfo']);
 Route::get('/portfolio-info',[ApiController::class,'getPortfolioInfo']);
+Route::get('/contact-info',[ApiController::class,'getContactInfo']);
+Route::get('/social-icon-info',[ApiController::class,'getSocialIconInfo']);
 Route::get('/all-published-category',[APIController::class,'getAllPublishedCategory']);
 
 

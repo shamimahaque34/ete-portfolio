@@ -9,6 +9,8 @@ use App\Models\Service;
 use App\Models\Portfolio;
 use App\Models\Skill;
 use App\Models\SkillCategory;
+use App\Models\Contact;
+use App\Models\SocialIcon;
 
 
 class ApiController extends Controller
@@ -16,11 +18,14 @@ class ApiController extends Controller
      private $infos;
      private $services;
      private $portfolios;
+     private $socialIcons;
 
     private $categories;
     private $subCategories;
     private $result;
     private $resultSub;
+
+    private $contacts;
    
 
     public function getAllPublishedCategory()
@@ -74,6 +79,22 @@ class ApiController extends Controller
         $this->portfolios = Portfolio::where('status',1)->get();
 
         return response()->json($this->portfolios);
+
+    }
+
+     public function getContactInfo(){
+
+        $this->contacts = Contact::where('status',1)->get();
+
+        return response()->json($this->contacts);
+
+    }
+
+    public function getSocialIconInfo(){
+
+        $this->socialIcons = SocialIcon::where('status',1)->get();
+
+        return response()->json($this->socialIcons);
 
     }
 }
