@@ -60,6 +60,10 @@ class ApiController extends Controller
     public function getTestimonialInfo(){
 
         $this->infos = Home::where('status',1)->get();
+         foreach($this->infos as $info)
+        {
+            $info->image =asset($info->image);
+        }
 
         return response()->json($this->infos);
 
