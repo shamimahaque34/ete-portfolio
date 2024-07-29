@@ -77,6 +77,9 @@
 <!-- INTERNAL Summernote Editor js -->
 <script src="{{asset('/')}}backend/assets/plugins/summernote-editor/summernote1.js"></script>
 <script src="{{asset('/')}}backend/assets/js/summernote.js"></script>
+  
+  <!-- CK Editor -->
+<script src="//cdn.ckeditor.com/4.17.2/full/ckeditor.js"></script>
 
 <script>
     $(function () {

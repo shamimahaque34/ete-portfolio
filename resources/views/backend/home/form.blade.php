@@ -73,7 +73,7 @@
 @endsection
 
 @push('script')
-    image<script>
+   <script>
         $(document).ready(function() {
             $('#imagez').change(function() {
                 var imgURL = URL.createObjectURL(event.target.files[0]);
@@ -84,5 +84,9 @@
                 });
             });
         });
+    </script>
+
+    <script>
+        CKEDITOR.replace('editor');
     </script>
 @endpush

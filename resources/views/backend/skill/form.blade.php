@@ -64,17 +64,4 @@
     </div>
 @endsection
 
-@push('script')
-    image<script>
-        $(document).ready(function() {
-            $('#imagez').change(function() {
-                var imgURL = URL.createObjectURL(event.target.files[0]);
-                $('#imagePreview').attr('src', imgURL).css({
-                    height: 150+'px',
-                    width: 150+'px',
-                    marginTop: '5px'
-                });
-            });
-        });
-    </script>
-@endpush
+
